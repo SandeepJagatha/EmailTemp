@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="author" content="Jagata, Satya">
+      <meta name="viewport" ontent="user-scalable=no, width=780, minimum-scale=1.0, maximum-scale=1">
+      <title>Email Template</title>
+      <script src="scripts/jquery.js"></script>
+      <script src="scripts/wow_min.js"></script>
+      <script src="scripts/bootstrap.min.js"></script>
+      <script src="scripts/bootstrap-datetimepicker.js"></script>
+      <script src="scripts/ckeditorstandard/ckeditor.js"></script>
+      <script src="scripts/dust-full-0.3.0.js"></script>
+      <script src="scripts/selectize.js"></script>
+      <script src="scripts/jquery.validate.js"></script>
+      <script src="scripts/filehub.js"></script>
+      <!-- core CSS -->
+      <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+      <link href="assets/fontawesome/css/font-awesome.css" rel="stylesheet">
+      <link href="assets/css/animate_min.css" rel="stylesheet" type="text/css">
+      <link href="assets/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+      <link href="assets/css/selectize.bootstrap2.css" rel="stylesheet" type="text/css">
+      <!-- <link href="assets/css/selectize.css" rel="stylesheet" type="text/css"> -->
+      <link href="assets/css/filehub-style.css" rel="stylesheet" type="text/css">
+      <script src="scripts/html5shiv.js"></script>
+      <link rel="shortcut icon" href="">
+
+   </head>
+
+   <style type="text/css">
+    @-moz-document url-prefix() {
+        select.status{
+            height: 18px;
+        }
+        select.selcondition  {
+            height: 25px;
+        }
+        select.status option{
+            padding:3px !important;margin-top: 0px;
+        }
+        select.selcondition option {
+            padding:2px !important;
+        }
+        span.format{
+          margin-top:-26px;
+        }
+    }
+    </style>
+   <body>
+      <div class="container">
+         <div class="wrap">
+         <form id="emailform">
+            <div class="page-header wow fadeInDown animated">
+               <div class="row">
+                  <div class="col-sm-8"><br>
+                    <div class="col-sm-1 envelopediv">
+                        <i class="fa fa-envelope-o fa-lg btnpop"></i>
+                    </div>
+                    <div class="col-sm-11 divtitle">
+                     <h3> 
+                        <small></small> Email Template - #7210
+                      </h3>
+                    </div>
+                      <div class="col-sm-12 captions">
+                      <small>&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i><strong>&nbsp;Status: </strong>
+                          <span><select class="status" name="item-status" id="id_item-status">
+                            <option style="color:white;background:#5bc0de;padding: 1px 0px;border: 0px solid #26BCEE;font-size: 11px;" value="0">Active</option>
+                            <option style="color:white;background:#5cb85c;padding: 1px 0px;border: 0px solid #5cb85c;font-size: 11px;" value="1">Completed</option>
+                            <option style="color:white;background:#d9534f;padding: 1px 0px;border: 0px solid #d9534f;font-size: 11px;" value="2">Suspended</option>
+                            <option style="color:white;background:#f0ad4e;padding: 1px 0px;border: 0px solid #f0ad4e;font-size: 11px;" value="3">Retired</option>
+                          </select></span>
+                        </small>
+                        <small>&nbsp;&nbsp;&nbsp;<i class="fa fa-calendar"></i><strong>&nbsp;&nbsp;Effective from:</strong>
+                          <span class="input-group date datePicker form-material spaneffectivedate" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd"> 
+                            <input class="form-control effectivedate" type="text" placeholder="yyyy-mm-dd" value="2015-02-07" required="" name="date0"> 
+                            <span class="input-group-addon effectivedate" style="padding-left: 0px;"><span class="glyphicon glyphicon-calendar" style="font-size: 8px;display:none;"></span></span>
+                          </span>
+
+                        </small>
+                      </div>
+                     <textarea name="ruledes" class="form-control" rows="3" placeholder="Description..."></textarea>
+                  </div>
+                  <div class="col-sm-4 templateinfo">
+                     <dl class="dl-horizontal">
+                        <dt>Version :</dt>
+                        <dd><input name="version" class="form-control" value="v0.1" type="hidden"> v0.1</dd>
+                        <dt>Created By</dt>
+                        <dd>
+                          <img src="assets/images/cdearing.jpg" alt="Avatar"> 
+                          <input name="createdby" class="form-control" value="Beale, Kristina " type="hidden">
+                          <a href="#">Beale, Kristina </a>
+                        </dd>
+                        <dt>Created On</dt><dd>7/2/2015<input name="createdon" value="7/2/2015" type="hidden"></dd>
+                        <dt>Modified By</dt>
+                        <dd>
+                          <img src="assets/images/cdukes.jpg" alt="Avatar"> 
+                          <input name="modifiedby" class="form-control" value="Statham, Jason" type="hidden">
+                          <a href="#">Statham, Jason</a>
+                        </dd>
+                        <dt>Modified On</dt><dd>7/2/2015<input name="modifieddon" value="7/2/2015" type="hidden"></dd>
+                     </dl>
+                  </div>
+               </div>
+            </div>
+
+            <div class="borderrules" id="rule1">
+              <div class="row">
+                  <input type="hidden" value="1" id="recipientValue" />
+                  <div class="col-sm-12">
+                    <h5><strong>Recipients : </strong></h5>
+                    <div class="col-sm-6">
+                      <dl class="dl-horizontal recipientsdd">
+                        <dt>From  </dt>
+                        <dd>
+                           <select id="select-from" class="contacts selectized" placeholder="Select here..." name="from" tabindex="-1" style="display: none;">
+                             <option value="abc@gmail.com" selected="selected"></option>
+                           </select>
+                        </dd>
+                        <dt>To </dt>
+                        <dd>
+                           <select id="select-to" class="contacts selectized" placeholder="Select here..." name="to" multiple="multiple" tabindex="-1" style="display: none;">
+                             <option value="abc@gmail.com" selected="selected"></option>
+                           </select>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="col-sm-6">
+                      <dl class="dl-horizontal recipientsdd">
+                        <dt>CC </dt>
+                        <dd>
+                           <select id="select-cc" class="contacts selectized" placeholder="Select here..." name="cc" multiple="multiple" tabindex="-1" style="display: none;">
+                             <option value="abc@gmail.com" selected="selected"></option>
+                           </select>
+                        </dd>
+                        <dt>BCC </dt>
+                        <dd>
+                           <select id="select-bcc" class="contacts selectized" placeholder="Select here..." name="bcc" multiple="multiple" tabindex="-1" style="display: none;">
+                             <option value="abc@gmail.com" selected="selected"></option>
+                           </select>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <h5><strong>Subject : </strong></h5>
+                    <div class="col-sm-12" style="padding: 0px 23px;">
+                       <input name="subject" type="text"  class="form-control input-sm" placeholder="Please enter subject here..."></imput>
+                    </div>
+                  </div>
+
+                  
+                  <div class="col-sm-12">
+                    <h5><strong>Notification Message : </strong></h5>
+                    <div class="col-sm-12" style="padding: 0px 23px;">
+                       <textarea name="notificationmessage" id="notificationmessage" cols="30" rows="4" class="form-control"></textarea>
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-6">           
+                    <h5 style="margin-bottom: 0px;"><strong>Link: </strong></h5>    
+                    <div class="col-sm-6" style="padding-left: 30px;">                    
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox1"> Check box 1
+                          </label>
+                        </div>  
+                       <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox2"> Check box 2
+                          </label>
+                        </div>          
+                    </div>
+                    <div class="col-sm-6">            
+                       <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox3"> Check box 3
+                          </label>
+                        </div> 
+                       <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox4"> Check box 4
+                          </label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">  
+                    <h5 style="margin-bottom: 0px;"><strong >Attachment : </strong></h5>
+                    <div class="col-sm-6" style="padding-left: 30px;">                  
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="StepDocuments"> Step Documents
+                          </label>
+                        </div>  
+                       <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox5"> Check box 2
+                          </label>
+                        </div>  
+                    </div>
+                    <div class="col-sm-6">                
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="StepDocuments2"> Step Documents
+                          </label>
+                        </div>  
+                       <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="checkbox8"> Check box 2
+                          </label>
+                        </div> 
+                    </div>
+                  </div>
+
+
+                  
+               </div>
+            </div>
+
+            <div class="panel-footer wow fadeInUp animated">
+              <div class="form-group">
+                 <div class="col-sm-offset-8 col-sm-4 footerbtnsdiv">
+                    <button type="button" class="btn btn-sm btn-warning roundb reset"><i class="fa fa-times"></i> Cancel &nbsp;</button>
+                    <button type="button" class="btn btn-sm btn-primary roundb" ><i class="fa fa-pencil-square-o"></i> Save Draft &nbsp;</button>
+                    <button type="submit" class="btn btn-sm btn-success roundb" ><i class="fa fa-check" ></i> Submit &nbsp;</button>
+                    <a id="example" type="hidden" style="padding-left: 1px;"></a>
+                 </div>
+              </div>
+            </div>
+            </form>
+         </div>
+      </div><br>
+   </body>
+</html>
